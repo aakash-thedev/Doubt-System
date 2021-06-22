@@ -1,0 +1,143 @@
+*:focus{
+    outline: none;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(236, 236, 236);
+}
+
+#raise-doubt-wrapper{
+    position: relative;
+    width: 50%;
+    margin: auto;
+    padding-top: 2%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    margin-bottom: 1%;
+    background-color: white;
+}
+
+#raise-doubt-heading{
+    margin-left: 25%;
+    background-color: white;
+    padding: 0.7%;
+    display: inline-block;
+    color: grey;
+}
+
+#doubt-input-form{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#doubt-input-form form{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+#doubt-input-form form label{
+    margin-bottom: 1.5%;
+    font-size: 14px;
+}
+
+#title{
+    height: 40px;
+    margin-bottom: 1.5%;
+    padding: 1%;
+    border: 1px solid rgb(218, 218, 218);
+}
+
+#desc{
+    height: 40px;
+    margin-bottom: 2%;
+    padding: 1%;
+    border: 1px solid rgb(218, 218, 218);
+}
+
+#submit-doubt{
+    height: 40px;
+    width: 110px;
+    margin-left: auto;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: rgb(24, 123, 180);
+}
+
+/* ------------------- Home ------------------- */
+#home{
+    margin: auto;
+    width: 50%;
+}
+
+#home-heading{
+    display: inline-block;
+    background-color: white;
+    color: grey;
+    padding: 1%;
+    margin-top: -0.5%;
+}
+
+.doubt-container{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    padding: 2%;
+    margin-bottom: 3%;
+    background-color: white;
+}
+
+.doubt-container .doubt{
+    height: auto;
+    width: 97%;
+    border-bottom: 1px solid rgb(219, 219, 219);
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    margin-bottom: 1%;
+}
+
+.doubt span{
+    font-weight: 600;
+    font-size: 22px;
+    color: rgb(24, 123, 180);
+}
+
+.doubt p{
+    margin-top: -1%;
+    font-size: 16px;
+}
+
+.doubt small{
+    align-self: flex-end;
+    font-size: 14px;
+}
+
+.input-comment{
+    margin-top: 1%;
+}
+
+.c-input{
+    width: 90%;
+    height: 35px;
+    border: 1px solid rgb(202, 200, 200);
+    padding: 1%;
+}
+
+.c-btn{
+    height: 35px;
+    border: none;
+    color: white;
+    background-color: rgb(24, 123, 180);
+}
+
+/* -------------------Comments CSS ---------------- */
+.comment-container .comment{
+    width: 96%;
+    overflow-wrap: break-word;
+    background-color: rgb(228, 228, 228);
+    padding: 1%;
+    font-size: 15px;
+}

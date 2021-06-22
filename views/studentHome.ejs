@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="../assets/css/studentHome.css">
+
+<h3 id="raise-doubt-heading">Raise Doubt</h3>
+
+<div id="raise-doubt-wrapper">
+
+    <div id="doubt-input-form">
+
+        <form method="POST" action="/doubt/createDoubt">
+
+            <label>Title</label>
+            <input name="title" type="text" placeholder="Doubt Title" id="title">
+
+            <label>Description</label>
+            <input name="description" type="text" placeholder="Doubt Description" id="desc">
+
+            <button type="submit" id="submit-doubt">Ask Doubt</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<div id="home">
+
+    <h3 id="home-heading">Home</h3>
+
+    <% for (let doubt of doubts) { %>
+        
+        <div class="doubt-container">
+
+            <div class="doubt">
+
+                <span class="doubt-title"> <%= doubt.title %> </span> <br>
+                <p class="doubt-description"> <%= doubt.description %> </p>
+                <small> Asked By - <%= doubt.user.name %> <strong>on</strong> <%= String(doubt.createdAt).substring(0, 21) %>  </small>
+    
+            </div>
+
+            <div class="comment-container">
+
+                <small><%= doubt.comments.length %>  Comments</small>
+                <% for (let comment of doubt.comments) { %>
+
+                    <p class="comment">
+                        <span style="font-weight: 600; color: rgb(82, 82, 82);"><%= comment.user.name %> - </span>
+                        <span><%= comment.comment %></span>
+                    </p>
+                    
+                <% } %> 
+
+            </div>
+
+            <div class="input-comment">
+
+                <form method="POST" action="/doubt/createComment">
+
+                    <input name="comment" type="text" placeholder="Add Comment" class="c-input">
+                    <input name="user" type="hidden" value="<%= user._id %>">
+                    <input name="doubt" type="hidden" value="<%= doubt._id %>">
+                    <button type="submit" class="c-btn">Comment</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    <% } %> 
+
+</div>

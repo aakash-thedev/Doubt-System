@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="../assets/css/taLogin.css">
+
+<div id="ta-login">
+
+    <div id="wrapper">
+
+        <section id="ta-register">
+
+            <h1>Register | TA</h1>
+
+            <form method="POST" action="/user/register/ta">
+                <label> Name </label>
+                <input name="name" type="text" placeholder="Enter your Name"></input>
+
+                <label> Email </label>
+                <input name="email" type="email" placeholder="Enter your Email"></input>
+
+                <label> Password </label>
+                <input name="password" type="password" placeholder="Enter your Password"></input>
+
+                <button type="submit" id="ta-register-btn">Register</button>
+            </form>
+        </section>
+
+        <span id="seperator"></span>
+
+        <section id="ta-signin">
+
+            <h2>Log In | TA</h2>
+
+            <form method="GET" action="/user/login/ta">
+                <label> Email </label>
+                <input name="email" type="email" placeholder="Enter your Email"></input>
+
+                <label> Password </label>
+                <input name="password" type="password" placeholder="Enter your Password"></input>
+
+                <button type="submit" id="ta-login-btn">Log In</button>
+            </form>
+        </section>
+
+    </div>
+    
+</div>

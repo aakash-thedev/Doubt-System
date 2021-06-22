@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="../assets/css/dedicatedDoubtPage.css">
+
+<div id="dedicated-doubt-wrapper">
+
+    <div class="doubt-container">
+
+        <div class="doubt">
+    
+            <span class="doubt-title"> <%= doubt.title %> </span> <br>
+            <p class="doubt-description"> <%= doubt.description %> </p>
+            <small> Asked By - <%= doubt.user.name %> <strong>on</strong> <%= String(doubt.createdAt).substring(0, 21) %>  </small>
+    
+        </div>
+    
+        <div class="comment-container">
+    
+            <small><%= doubt.comments.length %>  Comments</small>
+            <% for (let comment of doubt.comments) { %>
+    
+                <p class="comment">
+                    <span style="font-weight: 600; color: rgb(82, 82, 82);"><%= comment.user.name %> - </span>
+                    <span><%= comment.comment %></span>
+                </p>
+                
+            <% } %> 
+    
+        </div>
+    
+    </div>
+
+    <div id="answer-section">
+
+        <form method="POST" action="/doubt/resolveDoubt/?doubtId=<%= doubt._id %>&taId=<%= user._id %>">
+            <textarea name="answer" placeholder="Type your answer..."></textarea>
+            <button type="submit" id="answer">Answer</button>
+            <a type="submit" href="/doubt/escalateDoubt/?doubtId=<%= doubt._id %>&taId=<%= user._id %>" id="escalate">Escalate</a>
+        </form>
+
+    </div>
+
+</div>

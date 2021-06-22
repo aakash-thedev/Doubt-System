@@ -1,0 +1,111 @@
+#dedicated-doubt-wrapper{
+    width: 90%;
+    margin: 10% auto;
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Roboto', sans-serif;
+    padding: 1%;
+    border: 1px solid grey;
+}
+
+.doubt-container{
+    min-width: 400px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    padding: 2%;
+    background-color: white;
+}
+
+.doubt-container .doubt{
+    height: auto;
+    min-width: 400px;
+    width: 97%;
+    border-bottom: 1px solid rgb(219, 219, 219);
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    margin-bottom: 1.5%;
+}
+
+.doubt span{
+    font-weight: 600;
+    font-size: 22px;
+    color: rgb(24, 123, 180);
+}
+
+.doubt p{
+    margin-top: -1%;
+    font-size: 16px;
+}
+
+.doubt small{
+    align-self: flex-end;
+    font-size: 14px;
+}
+
+.input-comment{
+    margin-top: 1%;
+}
+
+.c-input{
+    width: 90%;
+    height: 35px;
+    border: 1px solid rgb(202, 200, 200);
+    padding: 1%;
+}
+
+.c-btn{
+    height: 35px;
+    border: none;
+    color: white;
+    background-color: rgb(24, 123, 180);
+}
+
+/* -------------------Comments CSS ---------------- */
+
+.comment-container .comment{
+    width: 96%;
+    overflow-wrap: break-word;
+    background-color: rgb(228, 228, 228);
+    padding: 1%;
+    font-size: 15px;
+}
+
+#answer-section{
+    height: 300px;
+    width: 450px;
+    padding: 1%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+#answer-section textarea{
+    width: 100%;
+    height: 78%;
+    resize: none;
+    margin-bottom: 7%;
+    padding: 4%;
+    border: none;
+    border: 1px solid rgb(221, 221, 221);
+}
+
+#answer{
+    height: 40px;
+    width: 47%;
+    padding: 1%;
+    font-size: 16px;
+    border: none;
+    color: white;
+    background-color: rgb(24, 123, 180);
+    cursor: pointer;
+}
+
+#escalate{
+    height: 40px;
+    width: 47%;
+    padding: 1%;
+    font-size: 16px;
+    border: 1px solid rgb(24, 123, 180);
+    color: rgb(24, 123, 180);
+    background-color: white;
+    margin-left: 4%;
+    cursor: pointer;
+}

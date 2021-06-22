@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../assets/css/taHome.css">
+
+<div id="pending-doubts">
+
+    <% for (let pendingDoubt of pendingDoubts) { %>
+
+        <div class="pending-doubt-wrapper">
+
+            <span class="pending-doubt-title"><%= pendingDoubt.title %></span>
+            <span class="pending-doubt-time">Asked on - <%= String(pendingDoubt.createdAt).substring(0, 21) %></span>
+            <a href="/ta/doubt/?pendingDoubtId=<%= pendingDoubt._id %>&taAcceptedId=<%= user._id %>">Accept</a>
+
+        </div>
+
+        <br>    
+        
+    <% } %> 
+
+</div>
