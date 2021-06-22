@@ -78,7 +78,7 @@ module.exports.resolveDoubt = async function(req, res){
 
             isResolved: true,
             resolvedBy: taId,
-            resolvedAns: answer
+            resolvedAnswer: answer
 
         }, {
             useFindAndModify: false

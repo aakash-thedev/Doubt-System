@@ -26,6 +26,13 @@ passport.use(new LocalStrategy({usernameField : 'email', passReqToCallback : tru
             return done(null, false);
         }
 
+        else if(req.params.userType != user.userType){
+
+            console.log("Invalid User");
+            // req.flash('error', 'Invalid Username/Password');
+            return done(null, false);            
+        }
+
         // if user is found then
         // null indicates no ERROR
         return done(null, user);
@@ -61,7 +68,7 @@ passport.checkAuthentication = function(req, res, next) {
         return next();
     }
 
-    return res.redirect('/');
+    return res.redirect('back');
 
 }
 

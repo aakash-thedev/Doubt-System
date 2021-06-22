@@ -33,7 +33,7 @@
         <form method="POST" action="/doubt/resolveDoubt/?doubtId=<%= doubt._id %>&taId=<%= user._id %>">
             <textarea name="answer" placeholder="Type your answer..."></textarea>
             <button type="submit" id="answer">Answer</button>
-            <a type="submit" href="/doubt/escalateDoubt/?doubtId=<%= doubt._id %>&taId=<%= user._id %>" id="escalate">Escalate</a>
+            <a href="/doubt/escalateDoubt/?doubtId=<%= doubt._id %>&taId=<%= user._id %>" id="escalate">Escalate</a>
         </form>
 
     </div>

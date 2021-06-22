@@ -32,10 +32,21 @@
 
             <div class="doubt">
 
+                <% if(doubt.isResolved) { %>
+                    <section class="resolved">R</section>
+                <% } %>
+
                 <span class="doubt-title"> <%= doubt.title %> </span> <br>
                 <p class="doubt-description"> <%= doubt.description %> </p>
                 <small> Asked By - <%= doubt.user.name %> <strong>on</strong> <%= String(doubt.createdAt).substring(0, 21) %>  </small>
     
+                <div class="answer">
+                    <% if(doubt.isResolved) { %>
+                        <strong>Answer - </strong><%= doubt.resolvedAnswer %> <br>
+                        Answered By - <%= doubt.resolvedBy.name %>  
+                    <% } %> 
+                </div>
+
             </div>
 
             <div class="comment-container">
@@ -44,7 +55,7 @@
                 <% for (let comment of doubt.comments) { %>
 
                     <p class="comment">
-                        <span style="font-weight: 600; color: rgb(82, 82, 82);"><%= comment.user.name %> - </span>
+                        <span style="font-weight: 500; color: rgb(24, 123, 180); font-size: 14px;"><%= comment.user.name %> - </span>
                         <span><%= comment.comment %></span>
                     </p>
                     

@@ -1,12 +1,7 @@
-#pending-doubts{
-    margin-top: 7%;
-    border: 1px solid blue;
-}
-
 .pending-doubt-wrapper{
     height: 60px;
     width: 50%;
-    border: 1px solid red;
+    border: 1px solid rgb(228, 226, 226);
     margin: auto;
     position: relative;
     padding: 0.4%;
@@ -28,7 +23,14 @@
     top: 24%;
     height: 30px;
     width: 100px;
-    border: 1px solid red;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    background-color: rgb(67, 171, 219);
     text-align: center;
     padding-top: 1%;
+}
+
+.pending-doubt-wrapper a:hover{
+    background-color: rgb(33, 104, 197);
 }

@@ -68,3 +68,9 @@ module.exports.login = async function(req, res){
         });
     }
 }
+
+// ------------------- Log Out Feature ----------------------- //
+module.exports.destroySession = function(req, res){
+    req.logout();
+    return res.redirect('/');
+}
