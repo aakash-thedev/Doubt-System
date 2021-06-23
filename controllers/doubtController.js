@@ -152,3 +152,47 @@ module.exports.escalateDoubt = async function(req, res){
         });
     }
 }
+
+// ------------------------ UnResolve a doubt -------------------------- // [ Extra Feature ]
+
+module.exports.unresolveDoubt = async function(req, res){
+
+    try{
+
+        const doubtId = req.query.doubtId;
+        const taId = req.query.taId;
+
+        const updatedDoubt = await Doubt.findByIdAndUpdate(doubtId, {
+
+            isResolved: false,
+            resolvedBy: undefined,
+            resolvedAnswer: undefined,
+            doubtResolutionTime: 0
+
+        }, {
+            useFindAndModify: false
+        });
+
+        if(!updatedDoubt){
+            return res.send("<h1> Doubt not found !! Refresh the page </h1>")
+        }
+
+        // increase doubtsResolved count of that TA by 1
+        const taReport = await TaReportsLog.find({user: taId});
+        taReport[0].doubtsResolved -= 1;
+
+        taReport[0].save();
+
+        return res.redirect('back');
+
+    }
+
+    catch(err){
+
+        console.log(err);
+
+        return res.status(500).json({
+            message: "Internal Server Error"
+        });
+    }
+}

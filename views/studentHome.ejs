@@ -34,6 +34,11 @@
 
                 <% if(doubt.isResolved) { %>
                     <section class="resolved">R</section>
+
+                    <% if(user.id == doubt.user.id) { %>
+                        <a href="/doubt/unresolveDoubt/?doubtId=<%= doubt._id %>&taId=<%= doubt.resolvedBy._id %>" class="mark-as-unresolved" style="text-decoration: none; color: rgb(16, 118, 158);">Not Satisfied ? Mark as Unresolved</a>
+                    <% } %>
+
                 <% } %>
 
                 <span class="doubt-title"> <%= doubt.title %> </span> <br>
@@ -44,7 +49,7 @@
                     <% if(doubt.isResolved) { %>
                         <br>
                         <strong>Answer - </strong><%= doubt.resolvedAnswer %> <br> <br>
-                        Answered By - <%= doubt.resolvedBy.name %>
+                        Answered By - <%= doubt.resolvedBy.name %> on <%= String(doubt.updatedAt).substring(0, 21) %> 
                     <% } %> 
                 </div>
 

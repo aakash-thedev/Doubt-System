@@ -9,4 +9,6 @@ router.post('/createComment', doubtController.createComment);
 router.post('/resolveDoubt/', doubtController.resolveDoubt);
 router.get('/escalateDoubt', doubtController.escalateDoubt);
 
+router.get('/unresolveDoubt/', doubtController.unresolveDoubt);
+
 module.exports = router;

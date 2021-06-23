@@ -7,6 +7,14 @@ body{
     background-size: contain;
 }
 
+h1{
+    position: absolute;
+    color: white;
+    left: 5%;
+    font-size: 40px;
+    font-weight: 500;
+}
+
 #userSetupPage{
     display: inline-flex;
     align-items: center;
