@@ -90,10 +90,10 @@ module.exports.resolveDoubt = async function(req, res){
         }
 
         // increase doubtsResolved count of that TA by 1
-        const taReport = await TaReportsLog.findById(taId);
-        taReport.doubtsResolved += 1;
+        const taReport = await TaReportsLog.find({user: taId});
+        taReport[0].doubtsResolved += 1;
 
-        taReport.save();
+        taReport[0].save();
 
         return res.redirect('/ta/home');
 
@@ -126,10 +126,11 @@ module.exports.escalateDoubt = async function(req, res){
 
         // push this doubt inside TA's escalatedDoubts... so that we could hide this doubt from particular array and show new doubts instead
 
-        const taReport = await TaReportsLog.findById(taId);
-        taReport.doubtsEscalated.push(doubt._id);
+        let taReport = await TaReportsLog.find({user: taId});
 
-        taReport.save();
+        taReport[0].doubtsEscalated.push(doubt._id);
+
+        taReport[0].save();
 
         return res.redirect('/ta/home');
 

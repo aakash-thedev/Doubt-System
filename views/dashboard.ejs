@@ -5,17 +5,17 @@
 <div id="info-wrapper">
 
     <span class="card">
-        <div>23</div>
+        <div><%= totalDoubts %></div>
         Doubts Asked
     </span>
 
     <span class="card">
-        <div>12</div>
+        <div><%= doubtsResolved %></div>
         Doubts Resolved
     </span>
 
     <span class="card">
-        <div>3</div>
+        <div><%= doubtsEscalated %></div>
         Doubts Escalated
     </span>
 
@@ -30,74 +30,22 @@
 
     <h3>TAs Reports</h3>
 
-    <span class="ta-report">
+    <% for (let taReport of taReports) { %>
 
-        <strong style="color: rgb(51, 111, 190);">John Doe :</strong>
+        <span class="ta-report">
 
-        <span>Doubts Accepted - 12</span>
-        <span class="seperator">|</span>
-        <span>Doubts Resolved - 8</span>
-        <span class="seperator">|</span>
-        <span>Doubts Escalated - 4</span>
-        <span class="seperator">|</span>
-        <span>Avg Doubt Activity Time - 14 Min</span>
+            <strong class="col" style="color: rgb(51, 111, 190);"> <%= taReport.user.name %>  :</strong>
+    
+            <span class="col">Doubts Accepted - <%= taReport.doubtsAccepted.length %> </span>
+            <span class="seperator">|</span>
+            <span class="col">Doubts Resolved - <%= taReport.doubtsResolved %></span>
+            <span class="seperator">|</span>
+            <span class="col">Doubts Escalated - <%= taReport.doubtsEscalated.length %></span>
+            <span class="seperator">|</span>
+            <span class="col">Avg Doubt Activity Time - 14 Min</span>
+    
+        </span>
 
-    </span>
-
-    <span class="ta-report">
-
-        <strong style="color: rgb(51, 111, 190);">John Doe :</strong>
-
-        <span>Doubts Accepted - 12</span>
-        <span class="seperator">|</span>
-        <span>Doubts Resolved - 8</span>
-        <span class="seperator">|</span>
-        <span>Doubts Escalated - 4</span>
-        <span class="seperator">|</span>
-        <span>Avg Doubt Activity Time - 14 Min</span>
-
-    </span>
-
-    <span class="ta-report">
-
-        <strong style="color: rgb(51, 111, 190);">John Doe :</strong>
-
-        <span>Doubts Accepted - 12</span>
-        <span class="seperator">|</span>
-        <span>Doubts Resolved - 8</span>
-        <span class="seperator">|</span>
-        <span>Doubts Escalated - 4</span>
-        <span class="seperator">|</span>
-        <span>Avg Doubt Activity Time - 14 Min</span>
-
-    </span>
-
-    <span class="ta-report">
-
-        <strong style="color: rgb(51, 111, 190);">John Doe :</strong>
-
-        <span>Doubts Accepted - 12</span>
-        <span class="seperator">|</span>
-        <span>Doubts Resolved - 8</span>
-        <span class="seperator">|</span>
-        <span>Doubts Escalated - 4</span>
-        <span class="seperator">|</span>
-        <span>Avg Doubt Activity Time - 14 Min</span>
-
-    </span>
-
-    <span class="ta-report">
-
-        <strong style="color: rgb(51, 111, 190);">John Doe :</strong>
-
-        <span>Doubts Accepted - 12</span>
-        <span class="seperator">|</span>
-        <span>Doubts Resolved - 8</span>
-        <span class="seperator">|</span>
-        <span>Doubts Escalated - 4</span>
-        <span class="seperator">|</span>
-        <span>Avg Doubt Activity Time - 14 Min</span>
-
-    </span>
+    <% } %>
 
 </section>

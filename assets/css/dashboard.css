@@ -1,5 +1,14 @@
-h1{
+body{
+    margin: 0%;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+    background: url('https://bs-uploads.toptal.io/blackfish-uploads/blog/article/content/cover_image_file/cover_image/20335/cover-default-cover-9-e9e2a4e027551681be020a158ca8db2c.png');
+    background-position: center;
+    background-size: contain;
+}
 
+h1{
+    color: white;
     margin-left: 43%;
     margin-bottom: 2%;
 }
@@ -12,6 +21,8 @@ h1{
     justify-content: space-around;
     align-items: center;
     background-color: white;
+    padding: 1%;
+    border-radius: 25px;
 }
 
 #info-wrapper .card{
@@ -56,4 +67,20 @@ h1{
     padding: 0.5%;
     margin-bottom: 0.2%;
     background-color: white;
+}
+
+.col{
+    display: flex;
+    justify-content: center;
+    width: 22%;
+}
+
+.col:first-child{
+    height: 100%;
+    align-items: center;
+    background-color: rgb(238, 238, 238);
+}
+
+.col:last-child{
+    width: 30%;
 }

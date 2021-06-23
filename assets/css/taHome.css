@@ -1,3 +1,16 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+h1{
+    margin-left: 24.5%;
+    border: 1px solid rgb(212, 208, 208);
+    display: inline-block;
+    padding: 1%;
+    color: grey;
+    font-weight: 500;
+}
+
 .pending-doubt-wrapper{
     height: 60px;
     width: 50%;
@@ -10,6 +23,7 @@
 .pending-doubt-wrapper .pending-doubt-title{
     font-size: 20px;
     font-weight: 600;
+    color: rgb(36, 131, 168);
 }
 
 .pending-doubt-wrapper .pending-doubt-time{

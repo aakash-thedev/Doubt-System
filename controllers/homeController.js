@@ -14,7 +14,7 @@ module.exports.home = function(req, res){
                 return res.redirect('/student/home');
             }
         }
-        return res.render('userSetup');
+        return res.render('app_home');
     }
 
     catch(err){
@@ -38,7 +38,7 @@ module.exports.ta = function(req, res){
             }
         }
     
-        return res.render('ta');
+        return res.render('taSetup');
     }
 
     catch(err){
@@ -59,7 +59,7 @@ module.exports.student = function(req, res){
             }
         }
     
-        return res.render('student');
+        return res.render('studentSetup');
     }
 
     catch(err){
@@ -110,18 +110,18 @@ module.exports.taHome = async function(req, res){
             return res.redirect('back');
         }
     
-        const pendingDoubts = await Doubt.find({isResolved: false}).sort('-createdAt');
+        let pendingDoubts = await Doubt.find({isResolved: false}).sort('-createdAt');
 
         // remove this TA's escalated doubts from pending doubts array for this TA so that he/she could get only new doubts
-        const taReport = await TaReportsLog.findById(req.user._id);
+        let taReport = await TaReportsLog.find({user: req.user._id});
 
-        pendingDoubts = pendingDoubts.filter(function(doubt) {
-            return taReport.doubtsEscalated.indexOf(doubt) == -1;
+        let newPendingDoubts = pendingDoubts.filter(function(doubt) {
+            return taReport[0].doubtsEscalated.indexOf(doubt._id) == -1;
         });
     
         return res.render('taHome', {
             user: req.user,
-            pendingDoubts: pendingDoubts
+            pendingDoubts: newPendingDoubts
         });
     }
 
@@ -152,7 +152,7 @@ module.exports.dedicated_doubt_page = async function(req, res) {
         }
 
         // find that TA in taReportsLog with taAcceptedId
-        const taReport = TaReportsLog.findById(taAcceptedId);
+        let taReport = await TaReportsLog.find({user: taAcceptedId});
 
         if(!taReport){
 
@@ -160,16 +160,18 @@ module.exports.dedicated_doubt_page = async function(req, res) {
         }
 
         // now increase the accepted number of this ta by 1 if that doubt isn't accepted by that user already ( in case of refresh page )
-        let index = taReport.doubtsAccepted.find((d_id) => {return d_id == doubt._id});
+        let index = taReport[0].doubtsAccepted.find((d_id) => {return d_id == doubt.id});
 
         if(index == undefined){
-            taReport.doubtsAccepted.push(doubt._id);
+            taReport[0].doubtsAccepted.push(doubt._id);
+            taReport[0].save();
         }
 
         return res.render('dedicatedDoubtPage', {
             user: req.user,
             doubt: doubt
         });
+
     }
 
     catch(err){
@@ -180,13 +182,25 @@ module.exports.dedicated_doubt_page = async function(req, res) {
 
 // ---------------------------- Dashboard's data & rendering ------------------------------ //
 
-module.exports.dashBoard = function(req, res){
+module.exports.dashBoard = async function(req, res){
 
     try{
 
+        const taReports = await TaReportsLog.find({}).populate('user');
+        const doubts = await Doubt.find({});
+        const doubtsResolved = await Doubt.find({isResolved: true});
+        let doubtsEscalated = 0;
 
+        for(let report of taReports) {
+            doubtsEscalated += report.doubtsEscalated.length;
+        }
 
-        return res.render('dashboard');
+        return res.render('dashboard', {
+            taReports: taReports,
+            totalDoubts: doubts.length,
+            doubtsResolved: doubtsResolved.length,
+            doubtsEscalated: doubtsEscalated
+        });
     }
 
     catch(err){
