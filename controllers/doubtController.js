@@ -1,5 +1,6 @@
 const Doubt = require('../models/doubt');
 const Comment = require('../models/comment');
+const TaReportsLog = require('../models/taReportsLog');
 
 //------------------------- Create a doubt ------------------------- //
 
@@ -88,6 +89,12 @@ module.exports.resolveDoubt = async function(req, res){
             return res.send("<h1> Doubt not found !! Refresh the page </h1>")
         }
 
+        // increase doubtsResolved count of that TA by 1
+        const taReport = await TaReportsLog.findById(taId);
+        taReport.doubtsResolved += 1;
+
+        taReport.save();
+
         return res.redirect('/ta/home');
 
     }
@@ -111,14 +118,18 @@ module.exports.escalateDoubt = async function(req, res){
         const doubtId = req.query.doubtId;
         const taId = req.query.taId;
 
-        const updatedDoubt = await Doubt.findById(doubtId);
+        const doubt = await Doubt.findById(doubtId);
 
-        if(!updatedDoubt){
+        if(!doubt){
             return res.send("<h1> Doubt not found !! Refresh the page </h1>")
         }
 
-        updatedDoubt.escalatedBy.push(taId);
-        updatedDoubt.save();
+        // push this doubt inside TA's escalatedDoubts... so that we could hide this doubt from particular array and show new doubts instead
+
+        const taReport = await TaReportsLog.findById(taId);
+        taReport.doubtsEscalated.push(doubt._id);
+
+        taReport.save();
 
         return res.redirect('/ta/home');
 

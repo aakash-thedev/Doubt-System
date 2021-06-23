@@ -1,0 +1,59 @@
+h1{
+
+    margin-left: 43%;
+    margin-bottom: 2%;
+}
+
+#info-wrapper{
+    height: auto;
+    width: 60%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+}
+
+#info-wrapper .card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 150px;
+    width: 190px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+    border-radius: 25px;
+    font-size: 18px;
+    background: linear-gradient(45deg, white 75%, rgb(35, 196, 224));
+    background-color: white;
+}
+
+.card div{
+    margin-top: 10%;
+    font-size: 60px;
+    margin-bottom: 12%;
+}
+
+/*  ------------------ TA REPORTS -------------------- */
+
+#ta-report-section{
+    height: auto;
+    width: 55%;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+    margin: 1.5% auto;
+    padding: 1%;
+    background-color: white;
+}
+
+.ta-report{
+    height: 40px;
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    border: 1px solid rgb(202, 202, 202);
+    padding: 0.5%;
+    margin-bottom: 0.2%;
+    background-color: white;
+}

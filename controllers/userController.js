@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const TaReportsLog = require('../models/taReportsLog');
 
 module.exports.home = function(req, res){
     console.log("Home");
@@ -26,6 +27,14 @@ module.exports.register = async function(req, res){
                 password: password,
                 userType: userType
             });
+            
+            // if newUser.userType is TA then push it into taReportsLog with all values default as 0 so that his/her performance could be tracked
+            if(newUser.userType == "ta"){
+                
+                const newTaReport = await TaReportsLog.create({
+                    user: newUser._id
+                });
+            }
 
             return res.redirect('back');
         }

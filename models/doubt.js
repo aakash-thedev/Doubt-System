@@ -18,13 +18,6 @@ const doubtSchema = new mongoose.Schema({
         required: true
     },
 
-    comments: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Comment'
-        }
-    ],
-
     isResolved: {
         type: Boolean,
         default: false
@@ -39,19 +32,12 @@ const doubtSchema = new mongoose.Schema({
         type: String
     },
 
-    escalatedBy: [
+    comments: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
+            ref: 'Comment'
         }
     ],
-
-    acceptedBy: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
-        }
-    ]
 
 }, {
     timestamps: true
