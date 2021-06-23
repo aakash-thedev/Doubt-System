@@ -89,6 +89,13 @@ module.exports.resolveDoubt = async function(req, res){
             return res.send("<h1> Doubt not found !! Refresh the page </h1>")
         }
 
+        // Now calculate the ' Doubt Resolving Time in minutes ' of the doubt;
+
+        const doubt = await Doubt.findById(doubtId);
+        let doubtResolutionTime = Math.abs((doubt.updatedAt - doubt.createdAt)/60000);
+        doubt.doubtResolutionTime = doubtResolutionTime;
+        doubt.save();
+
         // increase doubtsResolved count of that TA by 1
         const taReport = await TaReportsLog.find({user: taId});
         taReport[0].doubtsResolved += 1;

@@ -32,6 +32,11 @@ const doubtSchema = new mongoose.Schema({
         type: String
     },
 
+    doubtResolutionTime: {
+        type: Number,
+        default: 0
+    },
+
     comments: [
         {
             type: mongoose.Schema.Types.ObjectId,

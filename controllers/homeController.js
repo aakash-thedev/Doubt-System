@@ -191,6 +191,16 @@ module.exports.dashBoard = async function(req, res){
         const doubtsResolved = await Doubt.find({isResolved: true});
         let doubtsEscalated = 0;
 
+        let avgDoubtResolvingTime = 0;
+
+        for(let doubt of doubts){
+            avgDoubtResolvingTime += doubt.doubtResolutionTime;
+        }
+
+        // Calculate average doubt resolving time !!
+
+        avgDoubtResolvingTime = (avgDoubtResolvingTime/doubtsResolved.length);
+
         for(let report of taReports) {
             doubtsEscalated += report.doubtsEscalated.length;
         }
@@ -199,7 +209,8 @@ module.exports.dashBoard = async function(req, res){
             taReports: taReports,
             totalDoubts: doubts.length,
             doubtsResolved: doubtsResolved.length,
-            doubtsEscalated: doubtsEscalated
+            doubtsEscalated: doubtsEscalated,
+            avgDoubtResolvingTime: avgDoubtResolvingTime
         });
     }
 
