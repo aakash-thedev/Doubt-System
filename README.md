@@ -17,5 +17,5 @@ A System which has following key features -
 
     # 6 - Student on the other hand could see that their doubt has been resolved & if they don't find the answer satisfactory they could mark
           mark it as unresolved & the doubt will be showing to unresolved doubts again & resolved status from the TA who previously resolved that doubt would be eleminated.
-          
+
     # 7 - TA's performance track would be visible to the teachers in their dashboard.
