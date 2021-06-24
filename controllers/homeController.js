@@ -113,6 +113,7 @@ module.exports.taHome = async function(req, res){
         let pendingDoubts = await Doubt.find({isResolved: false}).sort('-createdAt');
 
         // remove this TA's escalated doubts from pending doubts array for this TA so that he/she could get only new doubts
+
         let taReport = await TaReportsLog.find({user: req.user._id});
 
         let newPendingDoubts = pendingDoubts.filter(function(doubt) {
@@ -127,7 +128,8 @@ module.exports.taHome = async function(req, res){
 
     catch(err){
         console.log("Err", err);
-        return res.send("<h1> Internal Server Error </h1>");    
+        return res.redirect('back');
+        // return res.send("<h1> Internal Server Error </h1>");    
     }
 }
 
