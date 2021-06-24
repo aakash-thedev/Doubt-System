@@ -114,10 +114,10 @@ module.exports.taHome = async function(req, res){
 
         // remove this TA's escalated doubts from pending doubts array for this TA so that he/she could get only new doubts
 
-        let taReport = await TaReportsLog.find({user: req.user._id});
+        let taReport = await TaReportsLog.findOne({user: req.user._id});
 
         let newPendingDoubts = pendingDoubts.filter(function(doubt) {
-            return taReport[0].doubtsEscalated.indexOf(doubt._id) == -1;
+            return taReport.doubtsEscalated.indexOf(doubt._id) == -1;
         });
     
         return res.render('taHome', {
@@ -153,7 +153,7 @@ module.exports.dedicated_doubt_page = async function(req, res) {
         }
 
         // find that TA in taReportsLog with taAcceptedId
-        let taReport = await TaReportsLog.find({user: taAcceptedId});
+        let taReport = await TaReportsLog.findOne({user: taAcceptedId});
 
         if(!taReport){
 
@@ -161,11 +161,11 @@ module.exports.dedicated_doubt_page = async function(req, res) {
         }
 
         // now increase the accepted number of this ta by 1 if that doubt isn't accepted by that user already ( in case of refresh page )
-        let index = taReport[0].doubtsAccepted.find((d_id) => {return d_id == doubt.id});
+        let index = taReport.doubtsAccepted.find((d_id) => {return d_id == doubt.id});
 
         if(index == undefined){
-            taReport[0].doubtsAccepted.push(doubt._id);
-            taReport[0].save();
+            taReport.doubtsAccepted.push(doubt._id);
+            taReport.save();
         }
 
         return res.render('dedicatedDoubtPage', {
@@ -194,11 +194,13 @@ module.exports.dashBoard = async function(req, res){
 
         let avgDoubtResolvingTime = 0;
 
+        // iterate over TA's accepted doubt
+
         for(let doubt of doubts){
             avgDoubtResolvingTime += doubt.doubtResolutionTime;
         }
 
-        // Calculate average doubt resolving time !!
+        // Calculate average doubt activity time !! - // TODO at last
 
         avgDoubtResolvingTime = (avgDoubtResolvingTime/doubtsResolved.length);
 
