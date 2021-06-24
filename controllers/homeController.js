@@ -129,7 +129,6 @@ module.exports.taHome = async function(req, res){
     catch(err){
         console.log("Err", err);
         return res.redirect('back');
-        // return res.send("<h1> Internal Server Error </h1>");    
     }
 }
 
