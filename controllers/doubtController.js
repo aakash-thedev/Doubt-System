@@ -135,7 +135,8 @@ module.exports.escalateDoubt = async function(req, res){
 
         let taReport = await TaReportsLog.findOne({user: taId});
 
-        taReport.doubtsEscalated.push(doubt._id);
+        // taReport.doubtsEscalated.push(doubt._id);
+        taReport.doubtsEscalated += 1;
 
         taReport.save();
 

@@ -8,29 +8,27 @@ const taReportsLogSchema = new mongoose.Schema({
         required: true
     },
 
-    doubtsAccepted: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Doubt'
-        }
-    ],
-
     doubtsResolved: {
         type: Number,
         default: 0
     },
 
-    doubtsEscalated: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Doubt'
-        }
-    ],
+    doubtsEscalated: {
+        type: Number,
+        default: 0
+    },
 
     averageResolvingTime: {
         type: Number,
         default: 0
     },
+
+    doubtsAccepted: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Doubt'
+        }
+    ]
 
 }, {
     timestamps: true

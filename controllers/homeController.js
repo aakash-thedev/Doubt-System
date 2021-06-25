@@ -113,16 +113,14 @@ module.exports.taHome = async function(req, res){
         let pendingDoubts = await Doubt.find({isResolved: false}).sort('-createdAt');
 
         // remove this TA's escalated doubts from pending doubts array for this TA so that he/she could get only new doubts
-
-        let taReport = await TaReportsLog.findOne({user: req.user._id});
-
-        let newPendingDoubts = pendingDoubts.filter(function(doubt) {
-            return taReport.doubtsEscalated.indexOf(doubt._id) == -1;
-        });
+        // let taReport = await TaReportsLog.findOne({user: req.user._id});
+        // let newPendingDoubts = pendingDoubts.filter(function(doubt) {
+        //     return taReport.doubtsEscalated.indexOf(doubt._id) == -1;
+        // });
     
         return res.render('taHome', {
             user: req.user,
-            pendingDoubts: newPendingDoubts
+            pendingDoubts: pendingDoubts
         });
     }
 
@@ -191,7 +189,6 @@ module.exports.dashBoard = async function(req, res){
         const doubts = await Doubt.find({});
         const doubtsResolved = await Doubt.find({isResolved: true});
         let doubtsEscalated = 0;
-
         let avgDoubtResolvingTime = 0;
 
         // iterate over TA's accepted doubt
@@ -200,12 +197,12 @@ module.exports.dashBoard = async function(req, res){
             avgDoubtResolvingTime += doubt.doubtResolutionTime;
         }
 
-        // Calculate average doubt activity time !! - // TODO at last
-
         avgDoubtResolvingTime = (avgDoubtResolvingTime/doubtsResolved.length);
 
+        // Calculate average doubt activity time !! - // TODO at last
+
         for(let report of taReports) {
-            doubtsEscalated += report.doubtsEscalated.length;
+            doubtsEscalated += report.doubtsEscalated;
         }
 
         return res.render('dashboard', {
